@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+from app.database.models import create_transactions_table
 
 # Function responsible for loading a bank statement in CSV format.
 # Receives the file path and returns a list of transactions
@@ -27,6 +28,9 @@ def load_bank_statement(file_path: str):
 
 # This block ensures the code below only runs when this script is executed directly
 if __name__ == "__main__":
+
+    # Ensure the transactions table exists before processing data
+    create_transactions_table()
 
     # Path to the bank statement CSV file
     path = "data/raw/sample_statement.csv"
